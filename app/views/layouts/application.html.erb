@@ -6,9 +6,17 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style media="screen">
+      body {
+        margin-top: 120px;
+      }
+    </style>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial: "layouts/header" %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
