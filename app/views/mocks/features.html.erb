@@ -12,46 +12,48 @@
 </div>
 
 <!-- Listing of feature requests -->
-<div class="col-md-12">
-  <% 10.times do %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <div class="panel-title">
+<div class="row">
+  <div class="col-md-12">
+    <% 10.times do %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title">
+            <div class="row">
+              <div class="col-md-8">
+                <%= link_to feature_path do %>
+                  Some text about the feature and how interseting it is
+                <% end %>
+              </div>
+              <div class="col-md-4 text-right">
+                Feature #<%= rand(1..10) %>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="panel-body">
+          Panel content
+        </div>
+        <div class="panel-footer">
           <div class="row">
             <div class="col-md-8">
-              <%= link_to feature_path do %>
-                Some text about the feature and how interseting it is
-              <% end %>
+              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+              Votes: <%= rand(50..1000) %>
+              Comments: <%= rand(3..20) %>
             </div>
-            <div class="col-md-4 text-right">
-              Feature #<%= rand(1..10) %>
-
+            <div class="col-md-4">
+              <div class="text-right">
+                <strong>bstawitz</strong>
+              </div>
             </div>
           </div>
+
 
         </div>
-
       </div>
-      <div class="panel-body">
-        Panel content
-      </div>
-      <div class="panel-footer">
-        <div class="row">
-          <div class="col-md-8">
-            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-            Votes: <%= rand(50..1000) %>
-            Comments: <%= rand(3..20) %>
-          </div>
-          <div class="col-md-4">
-            <div class="text-right">
-              <strong>bstawitz</strong>
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
