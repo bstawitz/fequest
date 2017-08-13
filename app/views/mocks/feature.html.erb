@@ -7,7 +7,7 @@
             <%= link_to "#", class: "btn btn-link" do%>
               <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
             <% end %>
-            <span class="badge badge-default"><%= rand(1..50) %></span>
+            <div class="badge badge-default"><%= rand(1..50) %></div>
             <%= link_to "#", class: "btn btn-link" do%>
               <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
             <% end %>
@@ -19,7 +19,7 @@
                   <div class="panel-body">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   </div>
-                  <div class="panel-footer">
+                  <div class="panel-footer" style="padding: 0px 5px;">
                     <%= link_to "comment", "#", class: "btn btn-link btn-xs" %>
                     <%= link_to "edit", "#", class: "btn btn-link btn-xs" %>
                   </div>
@@ -40,7 +40,7 @@
           <%= link_to "#", class: "btn btn-link" do%>
             <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
           <% end %>
-          <span class="badge badge-default"><%= rand(1..50) %></span>
+          <div class="badge badge-default"><%= rand(1..50) %></div>
           <%= link_to "#", class: "btn btn-link" do%>
             <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
           <% end %>
@@ -52,7 +52,7 @@
                 <div class="panel-body">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </div>
-                <div class="panel-footer">
+                <div class="panel-footer" style="padding: 0px 5px;">
                   <%= link_to "comment", "#", class: "btn btn-link btn-xs" %>
                   <%= link_to "edit", "#", class: "btn btn-link btn-xs" %>
                 </div>
@@ -69,10 +69,10 @@
         Admin
       </div>
       <div class="panel-body">
-        <div class="btn-group-vertical" role="group">
-          <%= link_to "Manage", "#", class: "btn btn-default" %>
-          <%= link_to "Export Task", "#", class: "btn btn-default" %>
-          <%= link_to "Deny / Flag", "#", class: "btn btn-default" %>
+        <div class="list-group">
+          <%= link_to "Manage", "#", class: "list-group-item" %>
+          <%= link_to "Export Task", "#", class: "list-group-item" %>
+          <%= link_to "Deny / Flag", "#", class: "list-group-item" %>
         </div>
       </div>
     </div>
