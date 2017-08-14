@@ -14,5 +14,62 @@
  *= require_self
  */
  // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+
+ // COLOR THEME
+ // https://color.adobe.com/Phaedra-color-theme-1764754/?showPublished=true
+ // #FF6138
+ // #FFFF9D
+ // #BEEB9F
+ // #79BD8F
+ // #00A388
+
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ .panel-footer {
+   background-color: white;
+   border-bottom: 2px solid #79BD8F;
+
+ }
+
+ a, a:hover {
+   color: #556c7c;
+ }
+
+ * {
+   color: #556c7c;
+ }
+
+.panel-default > .panel-heading {
+  // color: #fff;
+  border-bottom: 2px solid  #79BD8F;
+  background-color: white;
+  font-weight: bold;
+}
+
+ .panel-footer a, .panel-heading a, .panel-footer a:hover, .panel-heading a:hover {
+  //  color: white;
+ }
+
+ .navbar-default {
+   background-color: #00A388;
+   border-color: #79BD8F;
+
+ }
+
+ .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-brand {
+    color: white;
+ }
+
+.arrow {
+  font-weight: bold;
+  font-size: 120%;
+}
+
+.up-arrow {
+  color:#79BD8F;
+}
+
+.down-arrow {
+  color: #FF6138;
+}

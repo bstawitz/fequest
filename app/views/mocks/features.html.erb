@@ -39,8 +39,12 @@
         <div class="panel-footer">
           <div class="row">
             <div class="col-md-8">
-              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+              <%= link_to "#", class: "btn btn-link btn-xs" do%>
+                <span class="glyphicon glyphicon-chevron-up arrow up-arrow" aria-hidden="true"></span>
+              <% end %>
+              <%= link_to "#", class: "btn btn-link btn-xs" do%>
+                <span class="glyphicon glyphicon-chevron-down arrow down-arrow" aria-hidden="true"></span>
+              <% end %>
               Votes: <%= rand(50..1000) %>
               Comments: <%= rand(3..20) %>
             </div>
