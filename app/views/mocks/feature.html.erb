@@ -1,30 +1,42 @@
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-md-1 text-center">
-            <%= link_to "#", class: "btn btn-link" do%>
-              <span class="glyphicon glyphicon-chevron-up arrow up-arrow" aria-hidden="true"></span>
-            <% end %>
-            <div class="badge badge-default"><%= rand(1..50) %></div>
-            <%= link_to "#", class: "btn btn-link" do%>
-              <span class="glyphicon glyphicon-chevron-down arrow down-arrow" aria-hidden="true"></span>
-            <% end %>
+      <div class="panel-heading">
+        <div class="panel-title">
+          <div class="row">
+            <div class="col-md-8">
+              <%= link_to feature_path do %>
+              Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+              <% end %>
+            </div>
+            <div class="col-md-4 text-right">
+              #<%= rand(1..10) %>
+            </div>
           </div>
-          <div class="col-md-11">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </div>
-                  <div class="panel-footer" style="padding: 0px 5px;">
-                    <%= link_to "comment", "#", class: "btn btn-link btn-xs" %>
-                    <%= link_to "edit", "#", class: "btn btn-link btn-xs" %>
-                  </div>
-                </div>
-               </div>
+
+        </div>
+
+      </div>
+      <div class="panel-body">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-8">
+            <%= link_to "#", class: "btn btn-link btn-xs" do%>
+            <span class="glyphicon glyphicon-chevron-up arrow up-arrow" aria-hidden="true"></span>
+            <% end %>
+            <%= link_to "#", class: "btn btn-link btn-xs" do%>
+            <span class="glyphicon glyphicon-chevron-down arrow down-arrow" aria-hidden="true"></span>
+            <% end %>
+            Votes:
+            <strong><%= rand(20..50) %></strong>
+            Comments:
+            <strong><%= rand(3..20) %></strong>
+          </div>
+          <div class="col-md-4">
+            <div class="text-right">
+              <strong>bstawitz</strong>
             </div>
           </div>
         </div>
@@ -35,32 +47,32 @@
 <div class="row">
   <div class="col-md-9">
     <% 4.times do |comment| %>
-      <div class="row">
-        <div class="col-md-1 text-center">
-          <%= link_to "#", class: "btn btn-link" do%>
-            <span class="glyphicon glyphicon-chevron-up arrow up-arrow" aria-hidden="true"></span>
-          <% end %>
-          <div class="badge badge-default"><%= rand(1..50) %></div>
-          <%= link_to "#", class: "btn btn-link" do%>
-            <span class="glyphicon glyphicon-chevron-down arrow down-arrow" aria-hidden="true"></span>
-          <% end %>
-        </div>
-        <div class="col-md-11">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </div>
-                <div class="panel-footer" style="padding: 0px 5px;">
-                  <%= link_to "comment", "#", class: "btn btn-link btn-xs" %>
-                  <%= link_to "edit", "#", class: "btn btn-link btn-xs" %>
-                </div>
+    <div class="row">
+      <div class="col-md-1 text-center">
+        <%= link_to "#", class: "btn btn-link" do%>
+        <span class="glyphicon glyphicon-chevron-up arrow up-arrow" aria-hidden="true"></span>
+        <% end %>
+        <div class="badge badge-default"><%= rand(1..50) %></div>
+        <%= link_to "#", class: "btn btn-link" do%>
+        <span class="glyphicon glyphicon-chevron-down arrow down-arrow" aria-hidden="true"></span>
+        <% end %>
+      </div>
+      <div class="col-md-11">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </div>
-             </div>
+              <div class="panel-footer" style="padding: 0px 5px;">
+                <%= link_to "comment", "#", class: "btn btn-link btn-xs" %>
+                <%= link_to "edit", "#", class: "btn btn-link btn-xs" %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
     <% end %>
   </div>
   <div class="col-md-3">
