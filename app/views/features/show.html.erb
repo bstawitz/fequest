@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title">
+          <div class="row">
+            <div class="col-md-8">
+              <%= @feature.title %>
+            </div>
+            <div class="col-md-4 text-right">
+              #<%= @feature.id %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <%= @feature.body %>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-8">
+            <%= link_to feature_vote_path(id: @feature.id, vote_type: :upvote), class: "btn btn-link btn-xs", method: :post do%>
+              <span class="glyphicon glyphicon-chevron-up arrow up-arrow" aria-hidden="true"></span>
+            <% end %>
+            <%= link_to feature_vote_path(id: @feature.id, vote_type: :downvote), class: "btn btn-link btn-xs", method: :post do%>
+              <span class="glyphicon glyphicon-chevron-down arrow down-arrow" aria-hidden="true"></span>
+            <% end %>
+            Votes:
+            <strong><%= @feature.vote_score %></strong>
+            Comments:
+            <strong><%= @feature.comments.count %></strong>
+          </div>
+          <div class="col-md-4">
+            <div class="text-right">
+              <strong>bstawitz</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-9">
+    <% @comments.each do |comment| %>
+      <div class="row">
+        <div class="col-md-1 text-center">
+          <%= link_to "#", class: "btn btn-link" do%>
+            <span class="glyphicon glyphicon-chevron-up arrow up-arrow" aria-hidden="true"></span>
+          <% end %>
+          <div class="badge badge-default"><%= comment.votes_score %></div>
+          <%= link_to "#", class: "btn btn-link" do%>
+            <span class="glyphicon glyphicon-chevron-down arrow down-arrow" aria-hidden="true"></span>
+          <% end %>
+        </div>
+        <div class="col-md-11">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <%= comment.body %>
+                </div>
+                <div class="panel-footer" style="padding: 0px 5px;">
+                  <%= link_to "comment", "#", class: "btn btn-link btn-xs" %>
+                  <%= link_to "edit", "#", class: "btn btn-link btn-xs" %>
+                  <%= link_to "delete", delete_comment_path(comment.id), method: :delete, remote: true, class: "btn btn-link btn-xs" %>
+                  <div class="pull-right">
+                    <small><%= comment.created_at.strftime(" %m/%d/%Y at %I:%M%p")%></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%= form_for @feature.comments.new, :remote => true do |f| %>
+      <%= render "shared/errors", object: @feature.comments.new if @feature.comments.new.errors.any? %>
+      <%= hidden_field_tag :feature_id, @feature.id %>
+      <div class="form-group">
+        <label>Comment</label>
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+      <%= f.submit nil, class: "btn btn-default" %>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Admin
+      </div>
+      <div class="panel-body">
+        <div class="list-group">
+          <%= link_to "Manage", "#", class: "list-group-item" %>
+          <%= link_to "Export Task", "#", class: "list-group-item" %>
+          <%= link_to "Deny / Flag", "#", class: "list-group-item" %>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Info
+      </div>
+      <div class="panel-body">
+        <ul>
+          <li>124 Watchers</li>
+          <li>5 Posts</li>
+          <li>Posted on 25.09.16</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

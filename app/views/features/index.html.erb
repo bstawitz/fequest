@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="input-group">
+          <span class="input-group-addon" id="sizing-addon2">#</span>
+          <input type="text" class="form-control" placeholder="Ticket ID" aria-describedby="sizing-addon2">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="btn-group" role="group" aria-label="...">
+          <button type="button" class="btn btn-default">Newest</button>
+          <button type="button" class="btn btn-default">Hottest</button>
+          <button type="button" class="btn btn-default">Most Popular</button>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <%= link_to "Filter", "#", class: "btn btn-default btn-block" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-8">
+        <div class=" input-group">
+          <input type="text" class="form-control" aria-label="...">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search by
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li>
+                <a href="#">Name</a>
+              </li>
+              <li>
+                <a href="#">User</a>
+              </li>
+              <li>
+                <a href="#">Comment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 text-right">
+        <%= link_to new_feature_path, class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<!-- Listing of feature requests -->
+<div class="row">
+  <div class="col-md-12">
+    <% toggle = 0 %>
+    <% @features.each do |feature| %>
+      <% toggle += 1 %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title">
+            <div class="row">
+              <div class="col-md-8 feature-title">
+                <h4>
+                  <%= link_to feature.title, feature %>
+                </h4>
+              </div>
+              <div class="col-md-4 text-right feature-title">
+                <h4>
+                  #<%= feature.id %>
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <%= feature.body %>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-md-8">
+              <%= link_to feature_vote_path(id: feature.id, vote_type: :upvote), class: "btn btn-link btn-xs", method: :post do%>
+                <span class="glyphicon glyphicon-chevron-up arrow up-arrow" aria-hidden="true"></span>
+              <% end %>
+              <%= link_to feature_vote_path(id: feature.id, vote_type: :downvote), class: "btn btn-link btn-xs", method: :post do%>
+                <span class="glyphicon glyphicon-chevron-down arrow down-arrow" aria-hidden="true"></span>
+              <% end %>
+              Votes:
+              <strong><%= feature.vote_score%></strong>
+              Comments:
+              <strong><%= feature.comments.count %></strong>
+            </div>
+            <div class="col-md-4">
+              <div class="text-right">
+                <% if toggle.even? %>
+                  <strong>hmackinnon</strong>
+                <% else %>
+                  <strong>bstawitz</strong>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <%= will_paginate @features, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>

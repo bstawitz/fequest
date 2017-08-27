@@ -10,6 +10,7 @@ ruby '2.3.1'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem "jquery-rails"
 
+gem 'pry'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
@@ -36,7 +37,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'pg', group: :production
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+
+group :production do
+  gem 'pg'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -48,11 +54,14 @@ group :development, :test do
   gem 'sqlite3'
 
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
   gem 'factory_girl_rails'
 end
 
 group :test do
+  gem 'shoulda'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem "database_cleaner"
 end
 
 group :development do
