@@ -1,4 +1,5 @@
 class FeaturesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @features = Feature.all

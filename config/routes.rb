@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :features
   post 'new_comment', to: "comments#ajax_create", as: :comments
   delete 'delete_comment/:id', to: "comments#ajax_delete", as: :delete_comment

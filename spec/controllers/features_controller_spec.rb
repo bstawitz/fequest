@@ -3,25 +3,40 @@ require 'rails_helper'
 RSpec.describe FeaturesController, type: :controller do
 
   # GET
-  %w( new index ).each do |action|
-    describe "GET ##{action}" do
-      it "returns http success" do
-        get action.to_sym
+  describe "GET #index" do
+    it "returns http success" do
+      get :index
 
-        expect(response).to have_http_status(:success)
-      end
+      expect(response).to have_http_status(:success)
     end
   end
 
-  %w( edit show ).each do |action|
-    describe "GET ##{action}" do
-      it "returns a success response" do
-        feature = create(:feature)
+  describe "GET #new" do
+    it "returns http success" do
+      sign_in create(:user)
+      get :new
 
-        get action.to_sym, params: {id: feature.id}
+      expect(response).to have_http_status(:success)
+    end
+  end
 
-        expect(response).to be_success
-      end
+  describe "GET #edit" do
+    it "returns a success response" do
+      sign_in create(:user)
+      feature = create(:feature)
+
+      get :edit, params: {id: feature.id}
+
+      expect(response).to be_success
+    end
+  end
+  describe "GET #show" do
+    it "returns a success response" do
+      feature = create(:feature)
+
+      get :show, params: {id: feature.id}
+
+      expect(response).to be_success
     end
   end
 
@@ -29,6 +44,8 @@ RSpec.describe FeaturesController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       it "sbhould increase the feature count" do
+        sign_in create(:user)
+
         feature_attributes = attributes_for(:feature)
         feature_params = {feature: feature_attributes}
 
@@ -39,6 +56,7 @@ RSpec.describe FeaturesController, type: :controller do
 
     context "with invalid params" do
       it "should redirect back to the form on error" do
+        sign_in create(:user)
         feature = build(:feature, title: nil)
         feature_params = {feature: {title: feature.title, body: feature.body}}
 
@@ -52,6 +70,7 @@ RSpec.describe FeaturesController, type: :controller do
   describe "POST #update" do
     context "with valid params" do
       it "should update the feature with the new attributes" do
+        sign_in create(:user)
         feature = create(:feature)
         params = {id: feature.id, feature: { title: "new title", body: feature.body }}
 
@@ -61,6 +80,7 @@ RSpec.describe FeaturesController, type: :controller do
       end
 
       it "should show the updated feature" do
+        sign_in create(:user)
         feature = create(:feature)
         params = {id: feature.id, feature: { title: feature.title, body: feature.body }}
 
@@ -73,6 +93,7 @@ RSpec.describe FeaturesController, type: :controller do
 
     context "with invalid params" do
       it "should redirect back to the form on error" do
+        sign_in create(:user)
         feature = create(:feature)
         params = {id: feature.id, feature: { title: nil, body: feature.body }}
 
@@ -85,6 +106,7 @@ RSpec.describe FeaturesController, type: :controller do
 
   describe "POST #vote" do
     it "should increase upvote" do
+      sign_in create(:user)
       feature = create(:feature)
       params = {id: feature.id, vote_type: :upvote}
 
@@ -92,6 +114,7 @@ RSpec.describe FeaturesController, type: :controller do
     end
 
     it "should increase downvote" do
+      sign_in create(:user)
       feature = create(:feature)
       params = {id: feature.id, vote_type: :downvote}
 

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def ajax_create
     @comment = Feature.find(params[:feature_id]).comments.new(comment_params)

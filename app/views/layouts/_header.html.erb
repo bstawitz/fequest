@@ -14,16 +14,20 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="<%= mock_features_path %>">Home</a>
+          <a href="<%= features_path %>">Home</a>
         </li>
         <li>
           <a href="<%= mock_admin_path %>">Admin</a>
         </li>
         <li>
-          <a href="<%= mock_profile_path %>">Profile</a>
+          <a href="<%= edit_user_registration_path %>">Profile</a>
         </li>
         <li>
-          <a href="<%= mock_admin_path %>">Logout</a>
+          <% if current_user.present? %>
+            <a href="<%= destroy_user_session_path %>">Logout</a>
+          <% else %>
+            <a href="<%= new_user_session_path %>">Login</a>
+          <% end %>
         </li>
       </ul>
     </div>

@@ -4,6 +4,7 @@ RSpec.describe CommentsController, type: :controller do
   describe "POST #create" do
     context "when valid" do
       it "should increase the comment count" do
+        sign_in create(:user)
         comment = create(:comment)
         comment_params = {feature_id: comment.feature_id ,comment: {body: comment.body}}
 
@@ -12,6 +13,7 @@ RSpec.describe CommentsController, type: :controller do
 
 
       it "redirects to feature" do
+        sign_in create(:user)
         comment = create(:comment)
         comment_params = {feature_id: comment.feature_id ,comment: {body: comment.body}}
 
@@ -22,6 +24,7 @@ RSpec.describe CommentsController, type: :controller do
 
 
       it "redirects with flash" do
+        sign_in create(:user)
         comment = create(:comment)
         comment_params = {feature_id: comment.feature_id ,comment: {body: comment.body}}
 
@@ -33,6 +36,7 @@ RSpec.describe CommentsController, type: :controller do
 
     context "when invalid" do
       it "should not increase the comment count" do
+        sign_in create(:user)
         comment = create(:comment)
         comment_params = {feature_id: comment.feature_id ,comment: {body: nil}}
 
@@ -41,6 +45,7 @@ RSpec.describe CommentsController, type: :controller do
 
 
       it "redirects to feature" do
+        sign_in create(:user)
         comment = create(:comment)
         comment_params = {feature_id: comment.feature_id ,comment: {body: nil}}
 
@@ -51,6 +56,7 @@ RSpec.describe CommentsController, type: :controller do
 
 
       it "redirects with alert" do
+        sign_in create(:user)
         comment = create(:comment)
         comment_params = {feature_id: comment.feature_id ,comment: {body: nil}}
 
@@ -63,12 +69,14 @@ RSpec.describe CommentsController, type: :controller do
 
   describe "POST #delete" do
     it "should decrease the comment count" do
+      sign_in create(:user)
       comment = create(:comment)
 
       expect { delete :ajax_delete, params: {id: comment.id}, :format => 'js' }.to change(Comment, :count).by(-1)
     end
 
     it "should redirect back" do
+      sign_in create(:user)
       comment = create(:comment)
       feature = comment.feature
 
@@ -79,6 +87,7 @@ RSpec.describe CommentsController, type: :controller do
 
 
     it "should show notice" do
+      sign_in create(:user)
       comment = create(:comment)
 
       post :ajax_delete, params: {id: comment.id}, :format => 'js'
