@@ -30,4 +30,32 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  layouts:
+    header:
+      home: Home
+      admin: Admin
+      profile: Profile
+      login: Login
+      logout: Logout
+  features:
+    form:
+      title: Title
+      description: Description
+    edit:
+      edit_feature: Edit Feature
+    index:
+      feature_id: Feature ID
+      newest: Newest
+      hottest: Hottest
+      most_popular: Most Popular
+      search_by: Search by
+      name: Name
+      user: User
+      comment: Comment
+      votes: "Votes:"
+      comments: "Comments:"
+    new:
+      new_feature: New Feature
+    show:
+      votes: "Votes:"
+      comments: "Comments:"

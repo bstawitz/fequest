@@ -8,7 +8,7 @@ RSpec.describe CommentsController, type: :controller do
         comment = create(:comment)
         comment_params = {feature_id: comment.feature_id ,comment: {body: comment.body}}
 
-        expect { post :ajax_create, params: comment_params, :format => 'js' }.to change(Comment, :count).by(1)
+        expect { post :create, params: comment_params, :format => 'js' }.to change(Comment, :count).by(1)
       end
 
 
@@ -17,7 +17,7 @@ RSpec.describe CommentsController, type: :controller do
         comment = create(:comment)
         comment_params = {feature_id: comment.feature_id ,comment: {body: comment.body}}
 
-        post :ajax_create, params: comment_params, :format => 'js'
+        post :create, params: comment_params, :format => 'js'
 
         expect(response).to redirect_to(comment.feature)
       end
@@ -28,7 +28,7 @@ RSpec.describe CommentsController, type: :controller do
         comment = create(:comment)
         comment_params = {feature_id: comment.feature_id ,comment: {body: comment.body}}
 
-        post :ajax_create, params: comment_params, :format => 'js'
+        post :create, params: comment_params, :format => 'js'
 
         expect(flash[:notice]).to match(/^Comment was created/)
       end
@@ -40,7 +40,7 @@ RSpec.describe CommentsController, type: :controller do
         comment = create(:comment)
         comment_params = {feature_id: comment.feature_id ,comment: {body: nil}}
 
-        expect { post :ajax_create, params: comment_params, :format => 'js' }.to change(Comment, :count).by(0)
+        expect { post :create, params: comment_params, :format => 'js' }.to change(Comment, :count).by(0)
       end
 
 
@@ -49,7 +49,7 @@ RSpec.describe CommentsController, type: :controller do
         comment = create(:comment)
         comment_params = {feature_id: comment.feature_id ,comment: {body: nil}}
 
-        post :ajax_create, params: comment_params, :format => 'js'
+        post :create, params: comment_params, :format => 'js'
 
         expect(response).to redirect_to(comment.feature)
       end
@@ -60,19 +60,19 @@ RSpec.describe CommentsController, type: :controller do
         comment = create(:comment)
         comment_params = {feature_id: comment.feature_id ,comment: {body: nil}}
 
-        post :ajax_create, params: comment_params, :format => 'js'
+        post :create, params: comment_params, :format => 'js'
 
         expect(flash[:alert]).to match(/^Comment invalid/)
       end
     end
   end
 
-  describe "POST #delete" do
+  describe "DESTROY #delete" do
     it "should decrease the comment count" do
       sign_in create(:user)
       comment = create(:comment)
 
-      expect { delete :ajax_delete, params: {id: comment.id}, :format => 'js' }.to change(Comment, :count).by(-1)
+      expect { delete :destroy, params: {id: comment.id}, :format => 'js' }.to change(Comment, :count).by(-1)
     end
 
     it "should redirect back" do
@@ -80,7 +80,7 @@ RSpec.describe CommentsController, type: :controller do
       comment = create(:comment)
       feature = comment.feature
 
-      post :ajax_delete, params: {id: comment.id}, :format => 'js'
+      delete :destroy, params: {id: comment.id}, :format => 'js'
 
       expect(response).to redirect_to(feature)
     end
@@ -90,7 +90,7 @@ RSpec.describe CommentsController, type: :controller do
       sign_in create(:user)
       comment = create(:comment)
 
-      post :ajax_delete, params: {id: comment.id}, :format => 'js'
+      delete :destroy, params: {id: comment.id}, :format => 'js'
 
       expect(flash[:notice]).to match(/^Comment deleted/)
     end

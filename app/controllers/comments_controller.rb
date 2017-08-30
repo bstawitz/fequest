@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
 
-  def ajax_create
-    @comment = Feature.find(params[:feature_id]).comments.new(comment_params)
+  def create
+    @comment = Feature.find_by_id(params[:feature_id]).comments.new(comment_params)
     if @comment.save
       redirect_to @comment.feature, notice: "Comment was created"
     else
@@ -10,8 +10,10 @@ class CommentsController < ApplicationController
     end
   end
 
-  def ajax_delete
-    @comment = Comment.find(params[:id])
+  def destroy
+    @comment = Comment.find_by_id(params[:id])
+    return unless @comment.present?
+
     @feature = @comment.feature
 
     @comment.delete

@@ -4,14 +4,14 @@
       <div class="col-md-5">
         <div class="input-group">
           <span class="input-group-addon" id="sizing-addon2">#</span>
-          <input type="text" class="form-control" placeholder="Ticket ID" aria-describedby="sizing-addon2">
+          <input type="text" class="form-control" placeholder="<%= t('.feature_id') %>" aria-describedby="sizing-addon2">
         </div>
       </div>
       <div class="col-md-7">
         <div class="btn-group" role="group" aria-label="...">
-          <button type="button" class="btn btn-default">Newest</button>
-          <button type="button" class="btn btn-default">Hottest</button>
-          <button type="button" class="btn btn-default">Most Popular</button>
+          <button type="button" class="btn btn-default"><%= t('.newest') %></button>
+          <button type="button" class="btn btn-default"><%= t('.hottest') %></button>
+          <button type="button" class="btn btn-default"><%= t('.most_popular') %></button>
         </div>
       </div>
     </div>
@@ -22,18 +22,18 @@
         <div class=" input-group">
           <input type="text" class="form-control" aria-label="...">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search by
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= t('.search_by') %>
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu dropdown-menu-right">
               <li>
-                <a href="#">Name</a>
+                <a href="#"><%= t('.name') %></a>
               </li>
               <li>
-                <a href="#">User</a>
+                <a href="#"><%= t('.user') %></a>
               </li>
               <li>
-                <a href="#">Comment</a>
+                <a href="#"><%= t('.comment') %></a>
               </li>
             </ul>
           </div>
@@ -51,9 +51,7 @@
 <!-- Listing of feature requests -->
 <div class="row">
   <div class="col-md-12">
-    <% toggle = 0 %>
     <% @features.each do |feature| %>
-      <% toggle += 1 %>
       <div class="panel panel-default">
         <div class="panel-heading">
           <div class="panel-title">
@@ -83,18 +81,14 @@
               <%= link_to feature_vote_path(id: feature.id, vote_type: :downvote), class: "btn btn-link btn-xs", method: :post do%>
                 <span class="glyphicon glyphicon-chevron-down arrow down-arrow" aria-hidden="true"></span>
               <% end %>
-              Votes:
+              <%= t(".votes") %>
               <strong><%= feature.vote_score%></strong>
-              Comments:
+              <%= t(".comments") %>
               <strong><%= feature.comments.count %></strong>
             </div>
             <div class="col-md-4">
               <div class="text-right">
-                <% if toggle.even? %>
-                  <strong>hmackinnon</strong>
-                <% else %>
-                  <strong>bstawitz</strong>
-                <% end %>
+                <strong><%= User.first.email %></strong>
               </div>
             </div>
           </div>

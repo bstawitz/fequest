@@ -14,19 +14,19 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="<%= features_path %>">Home</a>
+          <a href="<%= features_path %>"><%= t('.home') %></a>
         </li>
         <li>
-          <a href="<%= mock_admin_path %>">Admin</a>
+          <a href="<%= mock_admin_path %>"><%= t('.admin') %></a>
         </li>
         <li>
-          <a href="<%= edit_user_registration_path %>">Profile</a>
+          <a href="<%= edit_user_registration_path %>"><%= t('.profile') %></a>
         </li>
         <li>
           <% if current_user.present? %>
-            <a href="<%= destroy_user_session_path %>">Logout</a>
+            <%= link_to t('.logout'), destroy_user_session_path, :method => :delete %>
           <% else %>
-            <a href="<%= new_user_session_path %>">Login</a>
+            <a href="<%= new_user_session_path %>"><%= t('.login') %></a>
           <% end %>
         </li>
       </ul>

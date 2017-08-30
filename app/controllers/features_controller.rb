@@ -7,12 +7,12 @@ class FeaturesController < ApplicationController
   end
 
   def show
-    @feature = Feature.find(params[:id])
+    @feature = Feature.find_by_id(params[:id])
     @comments = @feature.comments
   end
 
   def edit
-    @feature = Feature.find(params[:id])
+    @feature = Feature.find_by_id(params[:id])
   end
 
   def new
@@ -30,7 +30,7 @@ class FeaturesController < ApplicationController
   end
 
   def update
-    @feature = Feature.find(params[:id])
+    @feature = Feature.find_by_id(params[:id])
 
     if @feature.update(feature_params)
       redirect_to @feature, notice: 'Feature was successfully updated.'
@@ -40,7 +40,7 @@ class FeaturesController < ApplicationController
   end
 
   def vote
-    @feature = Feature.find(params[:id])
+    @feature = Feature.find_by_id(params[:id])
     vote_type = params[:vote_type] == "upvote" ? :upvotes : :downvotes
     @feature.increment!(vote_type)
     # redirect_to @feature, notice: "Feature was successfully #{params[:vote_type]}d."
